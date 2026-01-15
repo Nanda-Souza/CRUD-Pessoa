@@ -53,6 +53,22 @@ public class Pessoa {
         return cpfJaCadastrado;
     }
 
+    @Override
+    public String toString() {
+        return  "Id: " + id + "\n" +
+                "Nome: " + nome + "\n" +
+                "Data de Nascimento: " + dataNascimento + "\n" +
+                "CPF: " + cpf + "\n";
+    }
+
+    public void imprimeEnderecos() {
+        System.out.println("Enderecos:\n");
+        for (Endereco e : this.enderecos) {
+            System.out.println(e);
+        }
+
+    }
+
     public Integer getId() {
         return id;
     }

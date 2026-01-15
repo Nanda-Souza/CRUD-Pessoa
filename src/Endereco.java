@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class Endereco {
     private Integer id;
     private String rua;
@@ -15,6 +17,18 @@ public class Endereco {
         this.cidade = cidade;
         this.estado = estado;
         this.cep = cep;
+    }
+
+    @Override
+    public String toString() {
+        return  "Id: " + id + "\n" +
+                "Rua: " + rua + "\n" +
+                "Numero: " + numero + "\n" +
+                "Bairro: " + bairro + "\n" +
+                "Cidade: " + cidade + "\n" +
+                "Estado: " + estado + "\n" +
+                "CEP: " + cep + "\n" +
+                "-----------------------------------------";
     }
 
     public String getRua() {
