@@ -1,3 +1,4 @@
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -6,6 +7,10 @@ public class Menu {
         //Variaveis de Controle
         Scanner scanner = new Scanner(System.in);
         String inputUsuario;
+        ArrayList<Pessoa> pessoas = new ArrayList<>();
+        int idPessoa = 1;
+
+
 
 
         do{
@@ -23,7 +28,34 @@ public class Menu {
             switch (inputUsuario){
 
                 case "1":
-                    System.out.println("Pessoa Cadastrada!");
+                    System.out.println("Digite o nome:");
+                    String nomePessoa = scanner.nextLine();
+
+                    while (!Pessoa.nomeValido(nomePessoa)){
+                        System.out.println("Nome inválido. Digite novamente:");
+                        nomePessoa = scanner.nextLine().trim();
+                    }
+
+                    System.out.println("Digite a data de nascimento no formato aaaa-mm-dd:");
+                    //String dataNascimento = LocalDate.parse(scanner.nextLine());
+                    String dataNascimento = scanner.nextLine().trim();
+
+                    while (!Pessoa.dataNascimentoValida(dataNascimento)){
+                        System.out.println("Data inválida. Digite no formato aaaa-mm-dd e que não seja no futuro:");
+                        dataNascimento = scanner.nextLine().trim();
+                    }
+                    LocalDate pessoaNascimento = LocalDate.parse(dataNascimento);
+
+                    System.out.println("Digite o CPF:");
+                    String cpfPessoa = scanner.nextLine();
+
+                    while (!Pessoa.cpfValido(cpfPessoa) && Pessoa.cpfJaCadastrado(cpfPessoa, pessoas)){
+                        System.out.println("CPF inválido, digite novamente: ");
+                        cpfPessoa = scanner.nextLine();
+                    }
+
+
+
 
                     break;
 
