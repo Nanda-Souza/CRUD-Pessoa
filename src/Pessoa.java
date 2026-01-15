@@ -1,4 +1,5 @@
 import java.time.LocalDate;
+import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 
 public class Pessoa {
@@ -14,6 +15,42 @@ public class Pessoa {
         this.dataNascimento = dataNascimento;
         this.cpf = cpf;
         this.enderecos = enderecos;
+    }
+
+    public static boolean nomeValido(String nome) {
+        return nome != null &&
+                nome.matches("[a-zA-ZÀ-ÿ ]+") &&
+                nome.length() >= 3;
+    }
+
+    public static boolean dataNascimentoValida(String data) {
+        try {
+            LocalDate nascimento = LocalDate.parse(data);
+            return !nascimento.isAfter(LocalDate.now());
+        } catch (DateTimeParseException e) {
+            return false;
+        }
+    }
+
+    public static boolean cpfValido(String cpf) {
+        return cpf != null &&
+                cpf.matches("^\\d{11}$");
+    }
+
+    public static boolean cpfJaCadastrado(String cpf, ArrayList<Pessoa> pessoas) {
+
+        boolean cpfJaCadastrado = false;
+
+        for (Pessoa pessoa : pessoas) {
+            if (pessoa.cpf.equals(cpf)) {
+                cpfJaCadastrado = true;
+                System.out.println("CPF ja cadastrado!");
+                break;
+            }
+
+        }
+
+        return cpfJaCadastrado;
     }
 
     public Integer getId() {
