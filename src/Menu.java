@@ -3,6 +3,12 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Menu {
+
+    public static boolean inputValido(String input) {
+        return input != null &&
+                input.matches("^[12]$");
+    }
+
     public static void main(String[] args) {
         //Variaveis de Controle
         Scanner scanner = new Scanner(System.in);
@@ -44,7 +50,7 @@ public class Menu {
                         System.out.println("Data inválida. Digite no formato aaaa-mm-dd e que não seja no futuro:");
                         dataNascimento = scanner.nextLine().trim();
                     }
-                    LocalDate pessoaNascimento = LocalDate.parse(dataNascimento);
+                    LocalDate nascimentoPessoa = LocalDate.parse(dataNascimento);
 
                     System.out.println("Digite o CPF:");
                     String cpfPessoa = scanner.nextLine();
@@ -54,8 +60,55 @@ public class Menu {
                         cpfPessoa = scanner.nextLine();
                     }
 
+                    boolean cadastrarOutroEndereco = false;
+                    ArrayList<Endereco> enderecosPessoa = new ArrayList<>();
+                    int idEndereco= 1;
 
+                    do {
+                        System.out.println("Digite a Rua:");
+                        String rua = scanner.nextLine();
 
+                        System.out.println("Digite o Numero:");
+                        Integer numero = scanner.nextInt();
+
+                        System.out.println("Digite o Bairro:");
+                        String bairro = scanner.nextLine();
+
+                        System.out.println("Digite a Cidade:");
+                        String cidade = scanner.nextLine();
+
+                        System.out.println("Digite o Estado:");
+                        String estado = scanner.nextLine();
+
+                        System.out.println("Digite o CEP:");
+                        String cep = scanner.nextLine();
+
+                        Endereco endereco = new Endereco(idEndereco++, rua, numero, bairro, cidade, estado, cep);
+                        enderecosPessoa.add(endereco);
+
+                        System.out.println("\nDeseja adicionar mais um endereço? ");
+                        System.out.println("1 - Sim");
+                        System.out.println("2 - Não");
+
+                        inputUsuario = scanner.nextLine().trim();
+
+                        while (!inputValido(inputUsuario)){
+                            System.out.println("\nOpção inválida, digite 1 para sim e 2 para não:");
+                            inputUsuario = scanner.nextLine().trim();
+                        }
+
+                        if (inputUsuario.equals("1")){
+                            cadastrarOutroEndereco = true;
+                        } else {
+                            cadastrarOutroEndereco = false;
+                        }
+
+                    } while (cadastrarOutroEndereco);
+
+                    Pessoa pessoa = new Pessoa(idPessoa++, nomePessoa, nascimentoPessoa, cpfPessoa, enderecosPessoa);
+                    pessoas.add(pessoa);
+
+                    System.out.println("Pessoa Cadastrada com Sucesso!");
 
                     break;
 

@@ -44,7 +44,7 @@ public class Pessoa {
         for (Pessoa pessoa : pessoas) {
             if (pessoa.cpf.equals(cpf)) {
                 cpfJaCadastrado = true;
-                System.out.println("CPF ja cadastrado!");
+                System.out.println("\nCPF ja cadastrado!");
                 break;
             }
 
