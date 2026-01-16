@@ -31,6 +31,17 @@ public class Endereco {
                 "-----------------------------------------";
     }
 
+    public static boolean enderecoValido(String endereco){
+        return endereco != null &&
+                endereco.matches("^(?=.*[A-Za-zÀ-ÿ])[A-Za-zÀ-ÿ0-9 .,\\\\-]+$") &&
+                endereco.length() > 1;
+    }
+
+    public static boolean cepValido(String cep) {
+        return cep != null &&
+                cep.matches("^\\d{8}$");
+    }
+
     public String getRua() {
         return rua;
     }

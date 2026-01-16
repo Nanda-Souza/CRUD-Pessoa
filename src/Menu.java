@@ -9,6 +9,12 @@ public class Menu {
                 input.matches("^[12]$");
     }
 
+    public static boolean numeroValido(String numero) {
+        return numero != null &&
+                numero.matches("\\d+");
+    }
+
+
     public static void main(String[] args) {
         //Variaveis de Controle
         Scanner scanner = new Scanner(System.in);
@@ -35,7 +41,7 @@ public class Menu {
 
                 case "1":
                     System.out.println("Digite o nome:");
-                    String nomePessoa = scanner.nextLine();
+                    String nomePessoa = scanner.nextLine().trim();
 
                     while (!Pessoa.nomeValido(nomePessoa)){
                         System.out.println("Nome inválido. Digite novamente:");
@@ -52,12 +58,12 @@ public class Menu {
                     }
                     LocalDate nascimentoPessoa = LocalDate.parse(dataNascimento);
 
-                    System.out.println("Digite o CPF:");
-                    String cpfPessoa = scanner.nextLine();
+                    System.out.println("Digite o CPF, apenas numeros:");
+                    String cpfPessoa = scanner.nextLine().trim();
 
                     while (!Pessoa.cpfValido(cpfPessoa) && Pessoa.cpfJaCadastrado(cpfPessoa, pessoas)){
                         System.out.println("CPF inválido, digite novamente: ");
-                        cpfPessoa = scanner.nextLine();
+                        cpfPessoa = scanner.nextLine().trim();
                     }
 
                     boolean cadastrarOutroEndereco = false;
@@ -66,22 +72,54 @@ public class Menu {
 
                     do {
                         System.out.println("Digite a Rua:");
-                        String rua = scanner.nextLine();
+                        String rua = scanner.nextLine().trim();
 
-                        System.out.println("Digite o Numero:");
-                        Integer numero = scanner.nextInt();
+                        while (!Endereco.enderecoValido(rua)){
+                            System.out.println("Nome de Rua inválido, digite novamente:");
+                            rua = scanner.nextLine().trim();
+                        }
+
+                        System.out.println("Digite o Numero da Rua:");
+                        String inputNumero = scanner.nextLine().trim();
+
+                        while (!numeroValido(inputNumero)){
+                            System.out.println("Número inválido, digite novamente:");
+                            inputNumero = scanner.nextLine().trim();
+                        }
+
+                        Integer numero = Integer.parseInt(inputNumero);
 
                         System.out.println("Digite o Bairro:");
                         String bairro = scanner.nextLine();
 
+                        while (!Endereco.enderecoValido(bairro)){
+                            System.out.println("Bairro inválido, digite novamente:");
+                            bairro = scanner.nextLine().trim();
+                        }
+
                         System.out.println("Digite a Cidade:");
                         String cidade = scanner.nextLine();
+
+                        while (!Endereco.enderecoValido(cidade)){
+                            System.out.println("Cidade inválida, digite novamente:");
+                            cidade = scanner.nextLine().trim();
+                        }
 
                         System.out.println("Digite o Estado:");
                         String estado = scanner.nextLine();
 
-                        System.out.println("Digite o CEP:");
+                        while (!Endereco.enderecoValido(estado)){
+                            System.out.println("Estado inválido, digite novamente:");
+                            estado = scanner.nextLine().trim();
+                        }
+
+                        System.out.println("Digite o CEP, apenas numeros:");
                         String cep = scanner.nextLine();
+
+                        while (!Endereco.cepValido(cep)){
+                            System.out.println("CEP inválido, digite novamente:");
+                            cep = scanner.nextLine().trim();
+                        }
 
                         Endereco endereco = new Endereco(idEndereco++, rua, numero, bairro, cidade, estado, cep);
                         enderecosPessoa.add(endereco);
@@ -114,6 +152,7 @@ public class Menu {
 
                 case "2":
                     System.out.println("Pessoas listadas!");
+
 
                     break;
 
