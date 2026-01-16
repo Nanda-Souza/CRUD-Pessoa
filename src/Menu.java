@@ -61,7 +61,7 @@ public class Menu {
                     System.out.println("Digite o CPF, apenas numeros:");
                     String cpfPessoa = scanner.nextLine().trim();
 
-                    while (!Pessoa.cpfValido(cpfPessoa) && Pessoa.cpfJaCadastrado(cpfPessoa, pessoas)){
+                    while (!Pessoa.cpfValido(cpfPessoa) || Pessoa.cpfJaCadastrado(cpfPessoa, pessoas)){
                         System.out.println("CPF inválido, digite novamente: ");
                         cpfPessoa = scanner.nextLine().trim();
                     }
@@ -152,8 +152,6 @@ public class Menu {
 
                 case "2":
                     System.out.println("Pessoas listadas!");
-
-
                     break;
 
                 case "3":

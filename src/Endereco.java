@@ -21,14 +21,13 @@ public class Endereco {
 
     @Override
     public String toString() {
-        return  "Id: " + id + "\n" +
-                "Rua: " + rua + "\n" +
-                "Numero: " + numero + "\n" +
-                "Bairro: " + bairro + "\n" +
-                "Cidade: " + cidade + "\n" +
-                "Estado: " + estado + "\n" +
-                "CEP: " + cep + "\n" +
-                "-----------------------------------------";
+        return  "    Id: " + id + "\n" +
+                "    Rua: " + rua + "\n" +
+                "    Numero: " + numero + "\n" +
+                "    Bairro: " + bairro + "\n" +
+                "    Cidade: " + cidade + "\n" +
+                "    Estado: " + estado + "\n" +
+                "    CEP: " + cep + "\n";
     }
 
     public static boolean enderecoValido(String endereco){

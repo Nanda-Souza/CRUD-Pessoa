@@ -44,7 +44,7 @@ public class Pessoa {
         for (Pessoa pessoa : pessoas) {
             if (pessoa.cpf.equals(cpf)) {
                 cpfJaCadastrado = true;
-                System.out.println("\nCPF ja cadastrado!");
+                System.out.println("\nCPF ja cadastrado!\n");
                 break;
             }
 
@@ -62,7 +62,7 @@ public class Pessoa {
     }
 
     public void imprimeEnderecos() {
-        System.out.println("Enderecos:\n");
+        System.out.println("Enderecos:");
         for (Endereco e : this.enderecos) {
             System.out.println(e);
         }
