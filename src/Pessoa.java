@@ -44,13 +44,29 @@ public class Pessoa {
         for (Pessoa pessoa : pessoas) {
             if (pessoa.cpf.equals(cpf)) {
                 cpfJaCadastrado = true;
-                System.out.println("CPF ja cadastrado!");
+                System.out.println("\nCPF ja cadastrado!\n");
                 break;
             }
 
         }
 
         return cpfJaCadastrado;
+    }
+
+    @Override
+    public String toString() {
+        return  "Id: " + id + "\n" +
+                "Nome: " + nome + "\n" +
+                "Data de Nascimento: " + dataNascimento + "\n" +
+                "CPF: " + cpf + "\n";
+    }
+
+    public void imprimeEnderecos() {
+        System.out.println("Enderecos:");
+        for (Endereco e : this.enderecos) {
+            System.out.println(e);
+        }
+
     }
 
     public Integer getId() {

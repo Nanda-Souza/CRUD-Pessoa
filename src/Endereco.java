@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class Endereco {
     private Integer id;
     private String rua;
@@ -15,6 +17,28 @@ public class Endereco {
         this.cidade = cidade;
         this.estado = estado;
         this.cep = cep;
+    }
+
+    @Override
+    public String toString() {
+        return  "    Id: " + id + "\n" +
+                "    Rua: " + rua + "\n" +
+                "    Numero: " + numero + "\n" +
+                "    Bairro: " + bairro + "\n" +
+                "    Cidade: " + cidade + "\n" +
+                "    Estado: " + estado + "\n" +
+                "    CEP: " + cep + "\n";
+    }
+
+    public static boolean enderecoValido(String endereco){
+        return endereco != null &&
+                endereco.matches("^(?=.*[A-Za-zÀ-ÿ])[A-Za-zÀ-ÿ0-9 .,\\\\-]+$") &&
+                endereco.length() > 1;
+    }
+
+    public static boolean cepValido(String cep) {
+        return cep != null &&
+                cep.matches("^\\d{8}$");
     }
 
     public String getRua() {
