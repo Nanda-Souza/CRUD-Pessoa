@@ -151,12 +151,20 @@ public class Menu {
                     break;
 
                 case "2":
-                    System.out.println("Pessoas listadas!");
+                    if (pessoas.isEmpty()){
+                        System.out.println("Nenhum Pessoa Cadastrada!");
+                    } else {
+                        System.out.println("Lista de pessoas cadastradas:\n");
+                        for (Pessoa p : pessoas){
+                            System.out.println(p);
+                            p.imprimeEnderecos();
+                            System.out.println("---------------------------------\n");
+                        }
+                    }
                     break;
 
                 case "3":
                     System.out.println("Cadastro de Pessoa atualizado!");
-
                     break;
 
                 case "4":
