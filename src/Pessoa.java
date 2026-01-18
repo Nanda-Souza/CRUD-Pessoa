@@ -58,7 +58,7 @@ public class Pessoa {
         return  "Id: " + id + "\n" +
                 "Nome: " + nome + "\n" +
                 "Data de Nascimento: " + dataNascimento + "\n" +
-                "CPF: " + cpf + "\n";
+                "CPF: " + cpf;
     }
 
     public void imprimeEnderecos() {
