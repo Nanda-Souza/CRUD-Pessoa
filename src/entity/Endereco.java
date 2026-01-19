@@ -30,6 +30,12 @@ public class Endereco {
                 "    CEP: " + cep + "\n";
     }
 
+
+    public static boolean numeroRuaValida(String numeroRua) {
+        return numeroRua != null &&
+                numeroRua.matches("\\d+");
+    }
+
     public static boolean enderecoValido(String endereco){
         return endereco != null &&
                 endereco.matches("^(?=.*[A-Za-zÀ-ÿ])[A-Za-zÀ-ÿ0-9 .,\\\\-]+$") &&

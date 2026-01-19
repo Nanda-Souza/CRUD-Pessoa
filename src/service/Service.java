@@ -8,7 +8,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class Service {
-    private Repository pessoas;
+    private static Repository pessoas;
     private int idPessoa = 1;
 
     public Service(Repository pessoas) {
@@ -21,7 +21,7 @@ public class Service {
 
     }
 
-    public boolean cpfJaCadastrado(String cpf) {
+    public static boolean cpfJaCadastrado(String cpf) {
 
         boolean cpfJaCadastrado = false;
 
@@ -41,6 +41,19 @@ public class Service {
 
         return new Endereco(idEndereco, rua, numero, bairro, cidade, estado, cep);
 
+    }
+
+    public void listarPessoas(){
+        if (pessoas.getPessoas().isEmpty()){
+            System.out.println("Nenhum Pessoa Cadastrada!");
+        } else {
+            for (Pessoa p : pessoas.getPessoas()) {
+                System.out.println(p);
+                p.imprimeEnderecos();
+                System.out.println("---------------------------------\n");
+            }
+
+        }
     }
 
 
