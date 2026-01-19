@@ -1,4 +1,4 @@
-package Entity;
+package entity;
 
 public class Endereco {
     private Integer id;
