@@ -28,7 +28,7 @@ public class ServiceTest {
     @DisplayName("Deve cadastrar usúario no repositorio quando dados válidos forem fornecidos")
 
     void deveCadastrarPessoaNoRepositorioQuandoDadosValidosForemFornecidos() {
-        Endereco e = new Endereco(1, "7 de Abril", 15, "Centro", "Poa", "RS", "91750410");
+        Endereco e = service.criarEndereco(1, "7 de Abril", 15, "Centro", "Poa", "RS", "91750410");
         ArrayList<Endereco> enderecos = new ArrayList<>();
         enderecos.add(e);
         service.cadastrarUsuario("José Silva", LocalDate.parse("1988-05-05"), "00985497077", enderecos);
@@ -143,6 +143,22 @@ public class ServiceTest {
         assertFalse(retorno, "Quando o id da pessoa não é localizado endereço deve retornar false.");
         assertEquals("José Silva", repository.getPessoas().get(0).getNome(), "Repositório deve conter a pessoa José Silva pois não teve alteração");
         assertEquals("7 de Abril", repository.getPessoas().get(0).getEnderecos().get(0).getRua(), "Repositório deve conter o endereço 7 de Abril para pessoa José Silva pois não teve alteração");
+
+    }
+
+    @Test
+    @DisplayName("Deve excluir o usúario no repositorio quando o id fornecido for válido")
+
+    void deveExcluirPessoaNoRepositorioQuandoDadosIdFornecidoForValido() {
+        Endereco e = service.criarEndereco(1, "7 de Abril", 15, "Centro", "Poa", "RS", "91750410");
+        ArrayList<Endereco> enderecos = new ArrayList<>();
+        enderecos.add(e);
+        service.cadastrarUsuario("José Silva", LocalDate.parse("1988-05-05"), "00985497077", enderecos);
+
+        boolean resultado = service.excluirPessoa(1);
+
+        assertTrue(resultado, "Deve retornar True após excluir a pessoa do Repositório");
+        assertEquals(0, repository.getPessoas().size(), "Tamanho do repositório deve ser zero após o usuário ser excluido");
 
     }
 

@@ -455,5 +455,25 @@ public class Controller {
 
     }
 
+    public void excluirPessoa(){
+        System.out.println("Digite o ID da pessoa que deseja excluir:");
+        String idPessoa = scanner.nextLine().trim();
+
+        while (!inputIdValido(idPessoa)){
+            System.out.println("ID inválido, digite um ID válido para excluir o contato:");
+            idPessoa = scanner.nextLine().trim();
+        }
+
+        int id = Integer.parseInt(idPessoa);
+
+        boolean pessoaDeletada = service.excluirPessoa(id);
+
+        if (pessoaDeletada){
+            System.out.println("Pessoa excluida com sucesso!");
+        } else {
+            System.out.println("Id não encontrado!");
+        }
+    }
+
 
 }
