@@ -47,8 +47,7 @@ public class Menu {
                     break;
 
                 case "5":
-                    System.out.println("Selecione a pessoa para mostrar a idade!");
-
+                    controller.mostrarIdadePessoa();
                     break;
 
                 case "0":
