@@ -5,6 +5,8 @@ import entity.Endereco;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.time.LocalDate;
+import java.time.Period;
 import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -193,6 +195,20 @@ public class EntityTest {
         int retorno = Endereco.buscarPosicaoDoEndereco(1,enderecosPessoa);
 
         assertEquals(0, retorno, "Endereço encontrado deveria retornar o indice dele na lista e não -1");
+
+    }
+
+    @Test
+    @DisplayName("Deve retornar a idade correta para a data de nascimento da pessoa")
+    void deveRetornarAidadeCorretaDaPessoa(){
+        ArrayList<Endereco> enderecosPessoa = new ArrayList<>();
+        Endereco e = new Endereco(1, "Rua 7 de Setembro", 15, "Centro", "Poa", "RS", "91760650");
+        enderecosPessoa.add(e);
+        Pessoa p = new Pessoa(1, "Ana Livia", LocalDate.parse("2000-01-01"), "02314216000", enderecosPessoa);
+
+        int idadeEsperada = Period.between(LocalDate.parse("2000-01-01"), LocalDate.now()).getYears();
+
+    assertEquals(idadeEsperada, p.calcularIdade(), "A idade deve corresponder a " + idadeEsperada + " anos.");
 
     }
 
