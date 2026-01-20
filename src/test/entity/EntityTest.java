@@ -5,9 +5,9 @@ import entity.Endereco;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import java.util.ArrayList;
 
+import static org.junit.jupiter.api.Assertions.*;
 
 public class EntityTest {
     //Testes para as validações da entity Pessoa
@@ -169,6 +169,30 @@ public class EntityTest {
         boolean retorno = Endereco.cepValido(cep);
 
         assertTrue(retorno, "CEP com 8 dígitos deve ser válido");
+
+    }
+
+    @Test
+    @DisplayName("Deve retornar -1 quando não encontrar o endereço")
+    void deveRetornarMenosUmQuandoNaoEncontrarOendereco(){
+        ArrayList<Endereco> enderecosPessoa = new ArrayList<>();
+        Endereco e = new Endereco(1, "Rua 7 de Setembro", 15, "Centro", "Poa", "RS", "91760650");
+        enderecosPessoa.add(e);
+        int retorno = Endereco.buscarPosicaoDoEndereco(2,enderecosPessoa);
+
+        assertEquals(-1, retorno, "Endereço não encontrado deveria retornar -1");
+
+    }
+
+    @Test
+    @DisplayName("Deve retornar a posição do indice com base no id quando buscar o endereço")
+    void deveRetornarOindiceQuandoEncontrarOendereco(){
+        ArrayList<Endereco> enderecosPessoa = new ArrayList<>();
+        Endereco e = new Endereco(1, "Rua 7 de Setembro", 15, "Centro", "Poa", "RS", "91760650");
+        enderecosPessoa.add(e);
+        int retorno = Endereco.buscarPosicaoDoEndereco(1,enderecosPessoa);
+
+        assertEquals(0, retorno, "Endereço encontrado deveria retornar o indice dele na lista e não -1");
 
     }
 
