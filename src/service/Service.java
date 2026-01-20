@@ -52,10 +52,18 @@ public class Service {
                 p.imprimeEnderecos();
                 System.out.println("---------------------------------\n");
             }
-
         }
     }
 
+    public Pessoa buscarPessoa(int idPessoa){
+        for (Pessoa p : pessoas.getPessoas()) {
+            if (p.getId() == idPessoa) {
+                return p;
+            }
+        }
+
+        return null;
+    }
 
 
 }

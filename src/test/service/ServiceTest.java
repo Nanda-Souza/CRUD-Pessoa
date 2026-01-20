@@ -92,6 +92,19 @@ public class ServiceTest {
 
     }
 
+    @Test
+    @DisplayName("Deve buscar pessoa por id")
+    void deveRetornarPessoaBuscandoPorIdQuandoHouverPessoasCadastradas() {
+        Endereco e = new Endereco(1, "7 de Abril", 15, "Centro", "Poa", "RS", "91750410");
+        ArrayList<Endereco> enderecos = new ArrayList<>();
+        enderecos.add(e);
+        service.cadastrarUsuario("José Silva", LocalDate.parse("1988-05-05"), "00985497077", enderecos);
+        Pessoa p = service.buscarPessoa(1);
+
+        assertNotNull(p);
+
+    }
+
 
 
 }
