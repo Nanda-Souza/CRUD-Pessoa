@@ -88,6 +88,17 @@ public class Service {
         return true;
     }
 
+    public boolean excluirPessoa(int idPessoa){
+        for (Pessoa p : pessoas.getPessoas()) {
+            if (p.getId() == idPessoa) {
+                pessoas.remover(p);
+                return true;
+            }
+        }
+
+        return false;
+    }
+
 
 
 }

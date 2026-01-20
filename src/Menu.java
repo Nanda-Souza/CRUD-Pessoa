@@ -43,8 +43,7 @@ public class Menu {
                     break;
 
                 case "4":
-                    System.out.println("Cadastro de Pessoa excluido!");
-
+                    controller.excluirPessoa();
                     break;
 
                 case "5":
