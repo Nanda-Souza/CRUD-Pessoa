@@ -1,5 +1,8 @@
 package entity;
 
+import java.time.LocalDate;
+import java.util.ArrayList;
+
 public class Endereco {
     private Integer id;
     private String rua;
@@ -46,6 +49,16 @@ public class Endereco {
         return cep != null &&
                 cep.matches("^\\d{8}$");
     }
+
+    public static Integer buscarPosicaoDoEndereco(int idEndereco, ArrayList<Endereco> enderecos) {
+        for (int i = 0; i < enderecos.size(); i++) {
+            if (enderecos.get(i).getId() == idEndereco) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
 
     public String getRua() {
         return rua;

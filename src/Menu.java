@@ -39,7 +39,7 @@ public class Menu {
                     break;
 
                 case "3":
-                    System.out.println("Cadastro de Pessoa atualizado!");
+                    controller.atualizarPessoa();
                     break;
 
                 case "4":
