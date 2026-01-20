@@ -475,5 +475,26 @@ public class Controller {
         }
     }
 
+    public void mostrarIdadePessoa(){
+        System.out.println("Digite o ID da pessoa que deseja mostrar a idade:");
+        String idPessoa = scanner.nextLine().trim();
+
+        while (!inputIdValido(idPessoa)){
+            System.out.println("ID inválido, digite um ID válido para excluir o contato:");
+            idPessoa = scanner.nextLine().trim();
+        }
+
+        int id = Integer.parseInt(idPessoa);
+
+        Pessoa p = service.buscarPessoa(id);
+
+        if (p != null){
+            System.out.println("A idade do(a) " + p.getNome() + " é: " + p.calcularIdade() + " anos.");
+        } else {
+            System.out.println("Id não encontrado!");
+        }
+
+    }
+
 
 }

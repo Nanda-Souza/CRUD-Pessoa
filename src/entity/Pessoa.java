@@ -1,6 +1,7 @@
 package entity;
 
 import java.time.LocalDate;
+import java.time.Period;
 import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 
@@ -53,6 +54,11 @@ public class Pessoa {
             System.out.println(e);
         }
 
+    }
+
+    public int calcularIdade() {
+        LocalDate hoje = LocalDate.now();
+        return Period.between(this.dataNascimento, hoje).getYears();
     }
 
     public Integer getId() {
