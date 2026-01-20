@@ -1,4 +1,4 @@
-import java.util.ArrayList;
+package entity;
 
 public class Endereco {
     private Integer id;
@@ -28,6 +28,12 @@ public class Endereco {
                 "    Cidade: " + cidade + "\n" +
                 "    Estado: " + estado + "\n" +
                 "    CEP: " + cep + "\n";
+    }
+
+
+    public static boolean numeroRuaValida(String numeroRua) {
+        return numeroRua != null &&
+                numeroRua.matches("\\d+");
     }
 
     public static boolean enderecoValido(String endereco){

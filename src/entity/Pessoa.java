@@ -1,3 +1,5 @@
+package entity;
+
 import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
@@ -35,22 +37,6 @@ public class Pessoa {
     public static boolean cpfValido(String cpf) {
         return cpf != null &&
                 cpf.matches("^\\d{11}$");
-    }
-
-    public static boolean cpfJaCadastrado(String cpf, ArrayList<Pessoa> pessoas) {
-
-        boolean cpfJaCadastrado = false;
-
-        for (Pessoa pessoa : pessoas) {
-            if (pessoa.cpf.equals(cpf)) {
-                cpfJaCadastrado = true;
-                System.out.println("\nCPF ja cadastrado!\n");
-                break;
-            }
-
-        }
-
-        return cpfJaCadastrado;
     }
 
     @Override
