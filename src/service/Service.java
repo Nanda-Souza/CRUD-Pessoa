@@ -65,5 +65,29 @@ public class Service {
         return null;
     }
 
+    public boolean atualizarPessoa(int idPessoa, String novoNome, LocalDate novaDataNascimento, String novoCpf, ArrayList<Endereco> novosEnderecos) {
+        Pessoa p = buscarPessoa(idPessoa);
+
+        if (p == null) {
+            return false;
+        }
+
+        if (novoNome != null) {
+            p.setNome(novoNome);
+        }
+        if (novaDataNascimento != null) {
+            p.setDataNascimento(novaDataNascimento);
+        }
+        if (novoCpf != null) {
+            p.setCpf(novoCpf);
+        }
+        if (novosEnderecos != null) {
+            p.setEnderecos(novosEnderecos);
+        }
+
+        return true;
+    }
+
+
 
 }
